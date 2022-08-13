@@ -37,11 +37,14 @@ function displayDefault() {
         haveRead.innerText = myLibrary[i].haveRead;
         haveRead.setAttribute("class", "haveRead");
         let btn = document.createElement("button");
+        btn.setAttribute("class", "close")
         btn.onclick = function(e) {
             console.log(e.target.parentNode.parentNode);
             books.removeChild(e.target.parentNode.parentNode);
         }
         let header = document.createElement("div");
+        let readbtn = document.createElement("button");
+        readbtn.setAttribute("class", "readbtn");
         header.setAttribute("class", "header");
         header.append(title);
         header.append(btn);
@@ -49,10 +52,20 @@ function displayDefault() {
         card.append(author);
         card.append(pages);
         card.append(haveRead);
+        card.append(readbtn);
         books.append(card);
     }
 }
 
-let submitbtn = document.getElementsByClassName("submit")[0];
+var form = document.getElementById("form");
+form.onsubmit = function() {
+    let card = document.createElement("div");
+    let author = document.createElement("div");
+    console.log(form);
+};
+
+let submitbtn = document.getElementsByClassName("submit")[0].addEventListener("click", function() {
+    form.submit();
+});
 
 displayDefault();
